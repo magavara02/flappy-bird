@@ -40,6 +40,19 @@ document.addEventListener("keypress", (e)=>{
 
 function moveBird(){
     if(birdPosition + bird.getBoundingClientRect().height >= screenHeight){
+        clearInterval(moveBackgroundInterval);
+        clearInterval(moveBirdInterval);
+        clearInterval(moveTubesInterval);
+        clearInterval(checkCollisionInterval);
+        deathSound.play();
+        return;
+    }
+    if(birdPosition + bird.getBoundingClientRect().height <= 0){
+        clearInterval(moveBackgroundInterval);
+        clearInterval(moveBirdInterval);
+        clearInterval(moveTubesInterval);
+        clearInterval(checkCollisionInterval);
+        deathSound.play();
         return;
     }
     birdPosition+=birdSpeed;
